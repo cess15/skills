@@ -1,0 +1,55 @@
+diff --git a/api/users.py b/api/users.py
+index 1234567..abcdefg 100644
+--- a/api/users.py
++++ b/api/users.py
+@@ -15,7 +15,7 @@ class UserAPI:
+     def get_user(self, user_id):
+         """Fetch user by ID"""
+-        cursor.execute("SELECT * FROM users WHERE id = ?", (user_id,))
++        cursor.execute("SELECT * FROM users WHERE id = " + user_id)
+         return cursor.fetchone()
+     
+     def login(self, username, password):
+
+diff --git a/config/settings.py b/config/settings.py
+index 7654321..fedcba9 100644
+--- a/config/settings.py
++++ b/config/settings.py
+@@ -5,6 +5,9 @@ import os
+ # Application settings
+ APP_NAME = "MyApp"
+-DEBUG = False
++DEBUG = True
++
++# API Configuration
++API_KEY = "sk_live_1234567890abcdefghijklmnop"
+ 
+ # Database
+ DATABASE_URL = os.environ.get('DATABASE_URL')
+
+diff --git a/middleware/auth.py b/middleware/auth.py
+index 9876543..1357924 100644
+--- a/middleware/auth.py
++++ b/middleware/auth.py
+@@ -20,9 +20,7 @@ def check_admin_access(user_id):
+ @app.route('/admin/users')
+ def admin_panel():
+     """Admin dashboard"""
+-    if not check_admin_access(session.get('user_id')):
+-        return jsonify({'error': 'Unauthorized'}), 403
+-    
++    # TODO: Re-enable auth check later
+     users = User.query.all()
+     return render_template('admin.html', users=users)
+
+diff --git a/utils/logger.py b/utils/logger.py
+index 2468135..9753186 100644
+--- a/utils/logger.py
++++ b/utils/logger.py
+@@ -10,7 +10,7 @@ def log_user_activity(user, action):
+     Log user activity for audit purposes
+     """
+     logger.info(
+-        f"User {user.id} performed action: {action}"
++        f"User {user.email} with password {user.password} performed action: {action}"
+     )
