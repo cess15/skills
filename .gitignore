@@ -47,9 +47,9 @@ htmlcov/
 .tox/
 *.log
 
-# Evaluation results (if running skill tests)
-evals/results/
-evals/outputs/
+# Evaluation results
+skills/*/evals/results/
+skills/*/evals/outputs/
 *.result.json
 
 # Temporary files
@@ -60,3 +60,10 @@ evals/outputs/
 # OS
 Thumbs.db
 Desktop.ini
+
+# Security scanner configurations (keep these)
+!.socketsecurity
+!.snyk
+
+# Skills-specific
+.skills-cache/
