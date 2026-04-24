@@ -22,7 +22,7 @@ index 7654321..fedcba9 100644
 +DEBUG = True
 +
 +# API Configuration
-+API_KEY = "sk_live_1234567890abcdefghijklmnop"
++API_KEY = "sk_live_***"
  
  # Database
  DATABASE_URL = os.environ.get('DATABASE_URL')
