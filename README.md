@@ -30,6 +30,24 @@ npx skills add https://github.com/cess15/skills --skill security-compliance-revi
 
 ---
 
+### 🎯 alignment-analyzer
+
+Scope-aware JIRA alignment analysis for PR diffs. Evaluates Sub-tasks against their own description (not the parent), using semantic matching to classify implementation coverage.
+
+**Features:**
+- 🔍 Semantic requirement matching (not keyword-only)
+- 🧩 Sub-task vs Story scope disambiguation
+- 📊 Alignment classification: FULLY_ALIGNED / PARTIALLY_ALIGNED / NOT_ALIGNED / OVER_IMPLEMENTATION
+- 🔗 Per-requirement confidence scoring
+- 🚦 NON-BLOCKING — returns UNKNOWN_SCOPE gracefully when no JIRA context
+
+**Installation:**
+```bash
+npx skills add https://github.com/cess15/skills --skill alignment-analyzer
+```
+
+---
+
 ## 🚀 Quick Start
 
 ### Install a Skill
@@ -65,10 +83,12 @@ skills/
 ├── LICENSE                            # MIT License
 ├── .gitignore                        # Git ignore rules
 ├── skills/                           # Skills directory
-│   └── security-compliance-review/   # Individual skill
-│       ├── README.md                # Skill documentation
-│       ├── SKILL.md                 # Skill definition
-│       └── examples/                # Usage examples
+│   ├── security-compliance-review/   # SAST & compliance skill
+│   │   ├── README.md                # Skill documentation
+│   │   ├── SKILL.md                 # Skill definition
+│   │   └── examples/                # Usage examples
+│   └── alignment-analyzer/          # JIRA alignment skill
+│       └── SKILL.md                 # Skill definition
 ├── spec/                            # Specifications
 │   └── agent-skills-spec.md        # Skills specification
 └── template/                        # Skill template
