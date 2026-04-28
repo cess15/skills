@@ -29,7 +29,7 @@ Return `alignment: "UNKNOWN_SCOPE"`.
 
 ### 2. Determine scope source
 
-Sub-task → scope = **issue description** (NOT parent). Else → scope = issue description.
+Scope is always the issue's own description regardless of type (`scope_source: "issue_description"`).
 
 ### 3. Extract requirements
 
@@ -55,7 +55,7 @@ NOT keyword-only — use meaning.
 - `matched == requirements` → `FULLY_ALIGNED`
 - `0 < matched < requirements` → `PARTIALLY_ALIGNED`
 - `matched == 0` → `NOT_ALIGNED`
-- `implementations >> requirements` → `OVER_IMPLEMENTATION`
+- `matched == requirements AND extra_implementations > requirements_count` → `OVER_IMPLEMENTATION` (treat as `PARTIALLY_ALIGNED` in verdict)
 
 ## Output (JSON only)
 
@@ -65,7 +65,7 @@ NOT keyword-only — use meaning.
   "status": "SUCCESS",
   "alignment": "FULLY_ALIGNED",
   "analysis": {
-    "scope_source": "Sub-task description",
+    "scope_source": "issue_description",
     "requirements_count": 2,
     "implementations_count": 2,
     "matched_count": 2,
