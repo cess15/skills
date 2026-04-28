@@ -8,6 +8,7 @@ Reusable AI agent skills for code review, security analysis, and JIRA alignment 
 
 | Skill | Purpose | Blocking |
 |---|---|---|
+| [pr-preflight](skills/pr-preflight/) | Parse PR URL + validate git/MCP environment | BLOCKING |
 | [security-compliance-review](skills/security-compliance-review/) | SAST + compliance analysis on PR diffs | NON-BLOCKING |
 | [alignment-analyzer](skills/alignment-analyzer/) | JIRA scope alignment via semantic matching | NON-BLOCKING |
 | [jira-context](skills/jira-context/) | JIRA ticket enrichment + prompt injection detection | NON-BLOCKING |
@@ -24,7 +25,8 @@ npx skills add https://github.com/cess15/skills --skill <skill-name>
 These skills are designed to run together in a PR review pipeline:
 
 ```
-PR diff
+PR URL
+  └─► pr-preflight          — parse URL + validate env  [BLOCKING]
   └─► jira-context          — fetch JIRA ticket data
   └─► security-compliance-review  — SAST + compliance
   └─► alignment-analyzer    — evaluate scope coverage
@@ -42,6 +44,9 @@ skills/
 │   │   ├── README.md
 │   │   ├── SKILL.md
 │   │   └── examples/
+│   ├── pr-preflight/
+│   │   ├── README.md
+│   │   └── SKILL.md
 │   ├── alignment-analyzer/
 │   │   ├── README.md
 │   │   └── SKILL.md
