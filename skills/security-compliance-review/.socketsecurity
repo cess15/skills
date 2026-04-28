@@ -3,4 +3,4 @@ version: 1
 files:
   ignore:
     - "examples/**/*"
-    - "examples/analysis-output.md"
+    - "examples/sample-output.md"
