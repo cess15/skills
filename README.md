@@ -48,6 +48,23 @@ npx skills add https://github.com/cess15/skills --skill alignment-analyzer
 
 ---
 
+### 🔗 jira-context
+
+Extracts JIRA issue keys from PR context and enriches with ticket details via the Atlassian MCP. Scans all fetched content for prompt injection attempts. NON-BLOCKING.
+
+**Features:**
+- 🔑 Issue key extraction from branch name, PR title, and description
+- 📋 Sub-task aware — fetches parent issue when needed
+- 🛡️ Prompt injection detection across all fetched fields
+- 🚦 NON-BLOCKING — returns partial data on failure, never aborts pipeline
+
+**Installation:**
+```bash
+npx skills add https://github.com/cess15/skills --skill jira-context
+```
+
+---
+
 ## 🚀 Quick Start
 
 ### Install a Skill
@@ -87,7 +104,9 @@ skills/
 │   │   ├── README.md                # Skill documentation
 │   │   ├── SKILL.md                 # Skill definition
 │   │   └── examples/                # Usage examples
-│   └── alignment-analyzer/          # JIRA alignment skill
+│   ├── alignment-analyzer/          # JIRA alignment skill
+│   │   └── SKILL.md                 # Skill definition
+│   └── jira-context/               # JIRA enrichment skill
 │       └── SKILL.md                 # Skill definition
 ├── spec/                            # Specifications
 │   └── agent-skills-spec.md        # Skills specification
