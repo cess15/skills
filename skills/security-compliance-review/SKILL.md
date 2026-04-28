@@ -266,6 +266,8 @@ If **no compliance issues detected** or standard is **not applicable**, output:
 ```
 🟢 GDPR: Not Applicable (no personal data processing detected)
 🟢 HIPAA: Not Applicable (no PHI detected)
+🟢 SOC2: Not Applicable (no access control, audit logging, or multi-tenant data handling detected)
+🟢 PCI-DSS: Not Applicable (no payment card data detected)
 ```
 
 ---
@@ -309,7 +311,7 @@ These are practical patterns to guide analysis:
 |---------|------|--------|
 | User input → SQL/shell/eval without sanitization | Critical | Direct injection |
 | Hardcoded `password`, `api_key`, `secret`, `token` | Critical | Credential exposure |
-| Removed `if is_admin()` or `@auth_required` | Critical | Auth bypass |
+| Missing or commented-out `is_admin()` / `@auth_required` in `+` lines | Critical | Auth bypass |
 | `pickle.loads()`, `yaml.load()` on untrusted data | High | Deserialization RCE |
 | Logging `password`, `ssn`, `credit_card` | High | PII exposure |
 | `DEBUG=True` in production config | High | Info disclosure |
@@ -438,7 +440,7 @@ Before generating your response:
 5. ✅ Did I avoid reporting generic "use HTTPS" without context?
 6. ❌ Did I hallucinate a vulnerability that doesn't exist?
 
-**If in doubt, do NOT report an issue. Precision over recall.**
+**If in doubt, document the uncertainty in the exploitability rationale — do not silently omit Medium+ findings.**
 
 ---
 
