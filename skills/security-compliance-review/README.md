@@ -1,12 +1,13 @@
 # security-compliance-review
 
-Advanced SAST and compliance analysis for Pull Request diffs. Identifies real, exploitable vulnerabilities and regulatory compliance violations by analyzing only changed code. Language-agnostic.
+Advanced SAST and compliance analysis for Pull Request diffs. Identifies real, exploitable vulnerabilities and regulatory compliance violations by analyzing only changed code. Multi-language.
 
 ## Features
 
 - OWASP Top 10 detection with CWE mapping
 - Compliance checks: GDPR, HIPAA, SOC2, PCI-DSS
-- Diff-only analysis — no false positives from unchanged code
+- Diff-only analysis — `-` lines used only for data-flow context, never as findings
+- All Medium+ findings reported with exploitability rationale
 - Exploitability assessment from attacker perspective
 - Risk scoring (0–10 scale)
 
@@ -48,7 +49,8 @@ Issue 1: [Standard] - [Title]
 - Overall Risk Level
 - Risk Score: X/10
 - Issues count
-- Recommended actions
+- Key Risks (max 3)
+- Recommended Actions (max 3)
 ```
 
 ## Risk scoring
@@ -61,7 +63,7 @@ Critical: ×3.0 | High: ×2.0 | Medium: ×1.0 | Low: ×0.3
 
 ## Supported languages
 
-Python · JavaScript/TypeScript · Java · Go · Ruby · PHP · C# · Rust · Swift
+Python · JavaScript/TypeScript · Java · Go · Ruby · PHP · C# · and others (semantic pattern fallback for unlisted languages)
 
 ## Detection categories
 
