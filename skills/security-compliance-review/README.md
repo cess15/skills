@@ -78,7 +78,3 @@ Python · JavaScript/TypeScript · Java · Go · Ruby · PHP · C# · and others
 | XSS | innerHTML, dangerouslySetInnerHTML, reflected input |
 | Path Traversal | User input in file paths |
 | Weak Randomness | random() for tokens or passwords |
-
-## Examples
-
-See [`examples/`](examples/) for sample diff input and expected output.
