@@ -1,6 +1,0 @@
-# .socketsecurity
-version: 1
-files:
-  ignore:
-    - "examples/**/*"
-    - "examples/sample-output.md"

@@ -29,7 +29,7 @@ Requires the **claude.ai Atlassian MCP** (`mcp__claude_ai_Atlassian__*`). Not co
 }
 ```
 
-Key extraction priority: branch name → PR title → PR description. Pattern: `[A-Z]{2,10}-\d+`.
+Key extraction priority: branch name → PR title → PR description. Pattern: `\b[A-Z]{2,10}-\d+\b`. Excludes false-positive prefixes (`HTTP`, `CVE`, `CWE`, `PR`, etc.) via post-match exclusion list.
 
 ## Output
 
@@ -52,6 +52,7 @@ Key extraction priority: branch name → PR title → PR description. Pattern: `
   "scope_source": "issue_description",
   "injection_warning": false,
   "injection_details": [],
+  "secrets_redacted": false,
   "errors": []
 }
 ```
